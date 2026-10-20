@@ -1,0 +1,43 @@
+[package]
+name = "fresta-inspetor"
+version = "0.1.0"
+edition = "2021"
+description = "Veja por fora, pelo próprio Windows, tudo o que a Fresta faz no seu PC."
+license = "MIT"
+repository = "https://github.com/Dirt2939/fresta-inspetor"
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Reads Windows' event tracing (ETW): processes, network, files and DNS.
+ferrisetw = "1.2"
+winreg = "0.55"
+windows = { version = "0.61", features = [
+  "Wdk_System_Threading",
+  "Win32_Foundation",
+  "Win32_NetworkManagement_Dns",
+  "Win32_NetworkManagement_IpHelper",
+  "Win32_Networking_WinSock",
+  "Win32_Security_Credentials",
+  "Win32_Storage_FileSystem",
+  "Win32_System_Com",
+  "Win32_System_Diagnostics_ToolHelp",
+  "Win32_System_Threading",
+  "Win32_UI_Shell",
+] }
+
+[features]
+default = ["custom-protocol"]
+# The window's files are built into the program. Without this, Tauri would wait for a dev server.
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

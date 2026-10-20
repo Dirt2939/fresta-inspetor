@@ -1,0 +1,163 @@
+{
+  "versao": "2026-10-20",
+  "sobre": "Tudo o que a Fresta pode fazer no seu PC, com o motivo de cada coisa. O Inspetor compara o que o Windows vê com esta lista. Se a Fresta mudar, esta lista muda junto, no mesmo repositório público.",
+
+  "rede": [
+    {
+      "nome": "Atualizações da Fresta",
+      "motivo": "Confere a cada 6 horas se existe versão nova, lendo um arquivo público no GitHub. O instalador só é baixado quando você clica em atualizar.",
+      "hosts": ["raw.githubusercontent.com", "github.com", "objects.githubusercontent.com", "release-assets.githubusercontent.com"]
+    },
+    {
+      "nome": "Letras",
+      "motivo": "Busca a letra da música que está tocando.",
+      "hosts": ["lrclib.net"]
+    },
+    {
+      "nome": "YouTube",
+      "motivo": "Busca, Mix e o player de música da ilha. O login do YouTube, se você fizer, acontece numa janela do próprio Google.",
+      "hosts": ["www.youtube.com", "youtube.com", "*.youtube.com", "www.youtube-nocookie.com", "*.googlevideo.com", "*.ytimg.com", "*.ggpht.com", "accounts.google.com"]
+    },
+    {
+      "nome": "Google, dentro do player do YouTube",
+      "motivo": "O player do YouTube carrega coisas do próprio Google: fontes, verificação contra robôs, medições e anúncios. Os anúncios somem com o bloqueio de anúncios ligado. Servidores do Google também respondem pelo nome 1e100.net.",
+      "hosts": ["*.google.com", "*.gstatic.com", "*.googleapis.com", "*.doubleclick.net", "*.googlesyndication.com", "*.1e100.net"]
+    },
+    {
+      "nome": "Spotify",
+      "motivo": "Login, sua biblioteca e o player do Spotify dentro da ilha (Premium). O áudio vem dos servidores do Spotify e da Akamai, que entrega para ele.",
+      "hosts": ["accounts.spotify.com", "api.spotify.com", "*.spotify.com", "*.scdn.co", "*.spotifycdn.com", "*.akamaized.net"]
+    },
+    {
+      "nome": "Claude",
+      "motivo": "Chat com o Claude, quando você usa a sua própria chave da API.",
+      "hosts": ["api.anthropic.com"]
+    },
+    {
+      "nome": "Gemini",
+      "motivo": "Chat com o Gemini, quando você cadastra uma chave.",
+      "hosts": ["generativelanguage.googleapis.com"]
+    },
+    {
+      "nome": "Puter",
+      "motivo": "O chat grátis (Grok) e a transcrição do microfone, quando você entra com uma conta Puter.",
+      "hosts": ["puter.com", "api.puter.com", "*.puter.com"]
+    },
+    {
+      "nome": "Google (Gmail)",
+      "motivo": "Seus e-mails e códigos de verificação, quando você conecta a sua conta Google pelo seu próprio projeto do Google Cloud.",
+      "hosts": ["oauth2.googleapis.com", "gmail.googleapis.com", "www.googleapis.com", "accounts.google.com"]
+    },
+    {
+      "nome": "GitHub",
+      "motivo": "O cartão do GitHub: seu perfil, repositórios e contribuições, com a chave que você cadastrou.",
+      "hosts": ["api.github.com"]
+    },
+    {
+      "nome": "Vercel",
+      "motivo": "O cartão da Vercel: seus deploys, com a chave que você cadastrou.",
+      "hosts": ["api.vercel.com"]
+    },
+    {
+      "nome": "Stripe",
+      "motivo": "O cartão da Stripe: saldo e últimos pagamentos, com a chave que você cadastrou.",
+      "hosts": ["api.stripe.com"]
+    },
+    {
+      "nome": "Resend",
+      "motivo": "O cartão do Resend: seus e-mails enviados, com a chave que você cadastrou.",
+      "hosts": ["api.resend.com"]
+    },
+    {
+      "nome": "Notion",
+      "motivo": "O cartão do Notion: suas páginas recentes, com a chave que você cadastrou.",
+      "hosts": ["api.notion.com"]
+    },
+    {
+      "nome": "Cal.com",
+      "motivo": "O cartão do Cal.com: seus próximos agendamentos, com a chave que você cadastrou.",
+      "hosts": ["api.cal.com"]
+    },
+    {
+      "nome": "Supabase",
+      "motivo": "Sincronização e mensagens, só se você ligou e só com o seu próprio projeto do Supabase.",
+      "hosts": ["*.supabase.co"]
+    },
+    {
+      "nome": "Chamadas (Rooms)",
+      "motivo": "Servidores públicos que ajudam dois PCs a se acharem numa chamada, e os relays sugeridos nas Configurações. A voz em si vai direto para o PC de quem está na chamada.",
+      "hosts": ["stun.l.google.com", "stun1.l.google.com", "stun.cloudflare.com", "turn.cloudflare.com", "openrelay.metered.ca", "*.relay.metered.ca"]
+    },
+    {
+      "nome": "Certificados",
+      "motivo": "O Windows confere se o certificado de cada site é válido. É uma checagem de segurança padrão, feita para qualquer programa.",
+      "hosts": ["*.pki.goog", "*.digicert.com", "*.lencr.org", "*.globalsign.com", "*.sectigo.com", "*.usertrust.com", "*.amazontrust.com", "*.entrust.net", "*.msocsp.com", "ctldl.windowsupdate.com", "crl.microsoft.com", "*.public-trust.com"]
+    },
+    {
+      "nome": "Motor da janela (Microsoft)",
+      "motivo": "O WebView2, componente do Windows que desenha a janela da Fresta, busca as próprias configurações e atualizações na Microsoft.",
+      "hosts": ["*.microsoft.com", "*.msedge.net", "config.edge.skype.com"]
+    }
+  ],
+
+  "programas": [
+    { "exe": "msedgewebview2.exe", "parte": true, "motivo": "O motor que desenha a janela da Fresta (WebView2, componente do Windows)." },
+    { "exe": "powershell.exe", "parte": true, "motivo": "Instala a atualização que você pediu e reabre a Fresta." },
+    { "exe": "fresta-setup-*.exe", "parte": true, "motivo": "O instalador da atualização que você pediu." },
+    { "exe": "git.exe", "parte": true, "motivo": "Mostra o que mudou nas sessões do Claude Code (o diff)." },
+    { "exe": "conhost.exe", "parte": true, "motivo": "Console invisível que o Windows cria para os ajudantes de linha de comando." },
+    { "exe": "reg.exe", "parte": true, "motivo": "Apaga a entrada de início automático do atualizador antigo." },
+    { "exe": "tasklist.exe", "parte": true, "motivo": "Confere se o atualizador antigo ainda está rodando." },
+    { "exe": "taskkill.exe", "parte": true, "motivo": "Fecha o atualizador antigo, se ele ainda estiver rodando." },
+    { "exe": "rundll32.exe", "parte": false, "motivo": "Abre um link no seu navegador padrão." },
+    { "exe": "explorer.exe", "parte": false, "motivo": "Abre uma pasta ou um arquivo no Explorador." },
+    { "exe": "cmd.exe", "parte": false, "motivo": "Abre um terminal com o Claude Code, ou o VS Code numa pasta." },
+    { "exe": "claude.exe", "parte": false, "motivo": "O Claude Code, quando você conversa com ele pelo chat da ilha." },
+    { "exe": "node.exe", "parte": false, "motivo": "O Claude Code, quando ele foi instalado pelo npm." },
+    { "exe": "ollama.exe", "parte": false, "motivo": "A IA local, quando você usa o Ollama no chat." },
+    { "exe": "chrome.exe", "parte": false, "motivo": "Seu Chrome, numa janela à parte, quando você pede para a Fresta configurar o Gmail no Google Cloud. O perfil é temporário e apagado no fim." },
+    { "exe": "msedge.exe", "parte": false, "motivo": "O mesmo, com o Edge, quando o Chrome não está instalado." },
+    { "exe": "notepad.exe", "parte": false, "motivo": "Abre o registro da Fresta (fresta.log)." },
+    { "exe": "uninstall.exe", "parte": false, "motivo": "Desinstala o app antigo (Coucou), uma única vez, na mudança para a Fresta." },
+    { "exe": "un_a.exe", "parte": false, "motivo": "Cópia que o desinstalador do app antigo faz de si mesmo." }
+  ],
+
+  "pastas": [
+    { "pasta": "%LOCALAPPDATA%\\Fresta", "motivo": "O programa, a Biblioteca, as mensagens, as atualizações e o registro." },
+    { "pasta": "%APPDATA%\\Fresta", "motivo": "Configurações, tarefas e o tempo de uso do PC, que só existe aqui." },
+    { "pasta": "%LOCALAPPDATA%\\app.fresta", "motivo": "O perfil da janela: logins do YouTube e do Spotify e a chave das mensagens." },
+    { "pasta": "{Downloads}\\Fresta", "motivo": "O que você arrasta da web para o Pudim e os arquivos recebidos nas mensagens." },
+    { "pasta": "%USERPROFILE%\\.claude", "motivo": "Lê as sessões do Claude Code para a aba dele e instala os hooks quando você clica." },
+    { "pasta": "%APPDATA%\\Coucou", "motivo": "Copia os dados do app antigo, uma única vez, na mudança para a Fresta." },
+    { "pasta": "%LOCALAPPDATA%\\Coucou", "motivo": "Copia os dados do app antigo, uma única vez, na mudança para a Fresta." },
+    { "pasta": "%LOCALAPPDATA%\\fr.louisraille.coucou", "motivo": "Copia o perfil do app antigo, uma única vez, na mudança para a Fresta." }
+  ],
+
+  "chaves": {
+    "servico": "app.fresta",
+    "antigo": "fr.louisraille.coucou",
+    "nomes": {
+      "anthropic-api-key": "Chave da API do Claude",
+      "gemini-key-*": "Chave do Gemini",
+      "puter-token": "Login do Puter",
+      "spotify-refresh": "Login do Spotify",
+      "github-token": "Chave do GitHub",
+      "vercel-token": "Chave da Vercel",
+      "stripe-api-key": "Chave da Stripe",
+      "resend-api-key": "Chave do Resend",
+      "notion-api-key": "Chave do Notion",
+      "calcom-api-key": "Chave do Cal.com",
+      "n8n-url": "Endereço do n8n",
+      "n8n-api-key": "Chave do n8n",
+      "supabase-url": "Endereço do seu Supabase",
+      "supabase-anon-key": "Chave pública do seu Supabase",
+      "supabase-refresh": "Login do Supabase",
+      "supabase-email": "E-mail do Supabase",
+      "chat-mail-secret": "Segredo da caixa de mensagens",
+      "rooms-turn-url": "Endereço do relay das chamadas",
+      "rooms-turn-user": "Usuário do relay das chamadas",
+      "rooms-turn-pass": "Senha do relay das chamadas",
+      "google-*": "Login do Google"
+    }
+  }
+}

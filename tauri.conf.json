@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Fresta Inspetor",
+  "version": "0.1.0",
+  "identifier": "app.fresta.inspetor",
+  "build": {
+    "frontendDist": "ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Fresta Inspetor",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 1000,
+        "minHeight": 660,
+        "center": true,
+        "theme": "Dark",
+        "backgroundColor": "#080706"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": false,
+    "icon": ["icons/icon.ico", "icons/icon.png"]
+  }
+}

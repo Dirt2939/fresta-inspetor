@@ -1,0 +1,37 @@
+# Builds the Inspetor from this source on GitHub's own Windows machines and,
+# for a tag, attaches the .exe to the release with a provenance attestation,
+# so anyone can check the download came from this code.
+
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo test --release
+      - run: cargo build --release --locked
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fresta-inspetor
+          path: target/release/fresta-inspetor.exe
+      - if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: target/release/fresta-inspetor.exe
+      - if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" target/release/fresta-inspetor.exe --title "Fresta Inspetor $GITHUB_REF_NAME" --notes "Feito pelo GitHub Actions a partir deste código. Confira com: gh attestation verify fresta-inspetor.exe --repo $GITHUB_REPOSITORY"
